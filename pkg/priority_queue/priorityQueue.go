@@ -106,6 +106,13 @@ func (q *priorityQueue) bubbleDown(idx int) {
 			return
 		}
 
+		// in case right child not exist or l is end of data
+		if l == len(q.data)-1 || r >= len(q.data) {
+			q.swap(l, current)
+			current = l
+			continue
+		}
+
 		if q.compareFunc(q.data[l], q.data[r]) {
 			q.swap(l, current)
 			current = l
