@@ -23,7 +23,6 @@ func (q *priorityQueue) Poll() interface{} {
 	polled := q.data[0]
 	q.swap(0, len(q.data)-1)
 	q.data = q.data[:len(q.data)-1]
-	q.size--
 
 	q.bubbleDown(0)
 	return polled
@@ -32,7 +31,6 @@ func (q *priorityQueue) Poll() interface{} {
 func (q *priorityQueue) Offer(i interface{}) {
 	if len(q.data) < q.size {
 		q.data = append(q.data, i)
-		q.size++
 		idx := q.bubbleUp(len(q.data) - 1)
 		q.bubbleDown(idx)
 	} else {
