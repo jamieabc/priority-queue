@@ -16,6 +16,10 @@ type priorityQueue struct {
 }
 
 func (q *priorityQueue) Poll() interface{} {
+	if len(q.data) == 0 {
+		return nil
+	}
+
 	polled := q.data[0]
 	q.swap(0, len(q.data)-1)
 	q.data = q.data[:len(q.data)-1]
@@ -45,6 +49,9 @@ func (q *priorityQueue) Size() int {
 }
 
 func (q *priorityQueue) Peek() interface{} {
+	if len(q.data) == 0 {
+		return nil
+	}
 	return q.data[0]
 }
 
