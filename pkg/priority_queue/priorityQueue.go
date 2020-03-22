@@ -34,7 +34,7 @@ func (q *priorityQueue) Offer(i interface{}) {
 		idx := q.bubbleUp(len(q.data) - 1)
 		q.bubbleDown(idx)
 	} else {
-		if q.compareFunc(q.data[q.size-1], i) {
+		if q.compareFunc(i, q.data[q.size-1]) {
 			q.data[q.size-1] = i
 			idx := q.bubbleUp(q.size - 1)
 			q.bubbleDown(idx)
